@@ -35,5 +35,51 @@ void main() {
       expect(add('//;\n1;2;4;10\n12'), equals(29));
       expect(add('//;\n1\n2\n3'), equals(6));
     });
+
+    test('should throw exception for negative number', () {
+      expect(
+        () => add('1,-2'),
+        throwsA(
+          predicate(
+            (e) =>
+                e is Exception &&
+                e.toString().contains('negatives not allowed: -2'),
+          ),
+        ),
+      );
+      expect(
+        () => add('//;\n1;-2'),
+        throwsA(
+          predicate(
+            (e) =>
+                e is Exception &&
+                e.toString().contains('negatives not allowed: -2'),
+          ),
+        ),
+      );
+    });
+
+    test('should show all negatives in exception', () {
+      expect(
+        () => add('1,-2,-3,-4'),
+        throwsA(
+          predicate(
+            (e) =>
+                e is Exception &&
+                e.toString().contains('negatives not allowed: -2,-3,-4'),
+          ),
+        ),
+      );
+      expect(
+        () => add('//;\n1;-2;-4'),
+        throwsA(
+          predicate(
+            (e) =>
+                e is Exception &&
+                e.toString().contains('negatives not allowed: -2,-4'),
+          ),
+        ),
+      );
+    });
   });
 }

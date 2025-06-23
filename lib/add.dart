@@ -12,13 +12,17 @@ int add(String numbers) {
     numbers = parts.sublist(1).join(delimiter);
   }
 
-  final arr = numbers.replaceAll('\n', delimiter).split(delimiter);
-  int res = 0;
-  for (var item in arr) {
-    if (item.isNotEmpty) {
-      res += int.parse(item);
-    }
+  final arr = numbers
+      .replaceAll('\n', delimiter)
+      .split(delimiter)
+      .where((n) => n.isNotEmpty)
+      .map(int.parse)
+      .toList();
+  final negatives = arr.where((item) => item < 0).toList();
+
+  if (negatives.isNotEmpty) {
+    throw Exception('negatives not allowed: ${negatives.join(',')}');
   }
 
-  return res;
+  return arr.fold(0, (previousValue, element) => previousValue + element);
 }

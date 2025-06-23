@@ -18,6 +18,10 @@ void main() {
       expect(add('1,4,'), equals(5));
       expect(add('100, 200'), equals(300));
     });
+
+    test('should return the correct sum for any amount of numbers', () {
+      expect(add('1,2,4,5,100,99'), equals(211));
+      expect(add('1,2,4,5,100,99,'), equals(211));
+    });
   });
-  
 }

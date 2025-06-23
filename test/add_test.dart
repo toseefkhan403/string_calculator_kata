@@ -2,8 +2,22 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:string_calculator/add.dart';
 
 void main() {
-  test('add method should return 0 if the string is empty', () {
-    final output = add('');
-    expect(output, 0);
+  group('Add method test group', () {
+    test('should return 0 if the string is empty', () {
+      expect(add(''), equals(0));
+    });
+
+    test('should return the correct sum for a single number', () {
+      expect(add('1'), equals(1));
+      expect(add('1,'), equals(1));
+      expect(add('100'), equals(100));
+    });
+
+    test('should return the correct sum for two numbers', () {
+      expect(add('1,2'), equals(3));
+      expect(add('1,4,'), equals(5));
+      expect(add('100, 200'), equals(300));
+    });
   });
+  
 }

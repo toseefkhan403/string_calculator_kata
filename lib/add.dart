@@ -2,5 +2,17 @@
  * The method can take up to two numbers, separated by commas, and will return their sum. 
  */
 int add(String numbers) {
-  return numbers.isEmpty ? 0 : -1;
+  if (numbers.isEmpty) {
+    return 0;
+  }
+
+  final arr = numbers.split(',');
+  int res = 0;
+  for (var item in arr) {
+    if (item.isNotEmpty) {
+      res += int.parse(item);
+    }
+  }
+
+  return res;
 }

@@ -23,5 +23,10 @@ void main() {
       expect(add('1,2,4,5,100,99'), equals(211));
       expect(add('1,2,4,5,100,99,'), equals(211));
     });
+
+    test('should handle new lines between numbers instead of commas', () {
+      expect(add('1\n2,3'), equals(6));
+      expect(add('1\n2\n3'), equals(6));
+    });
   });
 }

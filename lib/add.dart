@@ -6,7 +6,7 @@ int add(String numbers) {
     return 0;
   }
 
-  final arr = numbers.split(',');
+  final arr = numbers.replaceAll('\n', ',').split(',');
   int res = 0;
   for (var item in arr) {
     if (item.isNotEmpty) {

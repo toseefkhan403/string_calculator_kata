@@ -28,5 +28,12 @@ void main() {
       expect(add('1\n2,3'), equals(6));
       expect(add('1\n2\n3'), equals(6));
     });
+
+    test('should support different delimiters', () {
+      expect(add('//;\n1;2'), equals(3));
+      expect(add('//;;\n1;;2'), equals(3));
+      expect(add('//;\n1;2;4;10\n12'), equals(29));
+      expect(add('//;\n1\n2\n3'), equals(6));
+    });
   });
 }

@@ -16,6 +16,7 @@ This project demonstrates clean Dart logic, unit testing, and a minimal Flutter 
 
 ## Project Structure
 
+```
 string_calculator/
 ├── lib/
 │ ├── main.dart # Flutter UI
@@ -24,6 +25,7 @@ string_calculator/
 │ └── add_test.dart # TDD unit tests
 ├── pubspec.yaml
 └── README.md
+```
 
 ## Running the project
 

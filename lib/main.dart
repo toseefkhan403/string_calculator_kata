@@ -30,7 +30,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
 
   void _calculate() {
     try {
-      final sum = add(_controller.text);
+      final sum = customArithmetic(_controller.text);
       setState(() => _result = 'Sum: $sum');
     } catch (e) {
       setState(() => _result = 'Error: ${e.toString()}');
